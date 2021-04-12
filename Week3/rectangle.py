@@ -21,6 +21,6 @@ r1.height = 20
 # Another instance
 r2 = Rectangle(2, 5)
 
-print(f"Area of R1 = {r1.height} x {r1.width} = {r1.area()}")
-print(f"Area of R1 = {r2.height} x {r2.width} = {r2.area()}")
+print(f"Area of r1 = {r1.height} x {r1.width} = {r1.area()}")
+print(f"Area of r1 = {r2.height} x {r2.width} = {r2.area()}")
 print("The perimeter of the rectangle is", r2.perimeter())
