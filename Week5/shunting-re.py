@@ -11,11 +11,11 @@ def shunt(infix):
     prec = {'*': 100, '.': 90, '|': 80, '(': 70, ')': 60}
     # loop through string one char at a time 
     for c in infix: 
+        
         if c in {'a', 'b'}:
             # Push to output
             postfix = postfix + c
-        # if c is an opperator
-
+        # if c is a non-special
         elif c in {'*', '.', '|'}:
             # Check what is on the stack
             while len(stack) > 0 and prec[stack[-1]] != '(' and prec[stack[-1]] >= prec[c]:
