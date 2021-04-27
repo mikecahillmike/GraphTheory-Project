@@ -18,6 +18,7 @@ class NFA:
         self.start = start
         self.end = end
 
+
 def re_to_nfa(postfix):
     # A stack for NFAs.
     stack = []
