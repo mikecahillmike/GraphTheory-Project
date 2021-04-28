@@ -26,7 +26,11 @@ class NFA:
 
 
 def shunt(infix):
-    """Cobert infix expressions o postfix"""
+    f = open("text.txt", "r") 
+
+
+
+    """Covert infix expressions to postfix"""
     # The eventual output.
     postfix = ""
     # The shunting yard operator stack
@@ -67,3 +71,4 @@ def shunt(infix):
         # Remove operator from stack
         stack = stack[:-1]
     return postfix
+

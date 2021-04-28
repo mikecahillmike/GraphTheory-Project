@@ -12,11 +12,44 @@ class State:
         self.arrows = arrows
         self.accept = accept
 
+    def followes(self):
+        """The set of states that are gotten from following this state
+            and all its e arrows"""
+        # Include this state in the returned set
+        states = {self}
+        # If this state has e arrows, i.e is None
+        if self.label is None:
+            # Loop through this state's arrows
+            for state in self.arrows:
+                # Incorporate that states e arrow states in states.
+                states = (states | state.followes())
+        # Return the set of states.
+        return states
+
 class NFA:
     """A non-deterministic finate automation"""
     def __init__(self, start, end):
         self.start = start
         self.end = end
+
+    def match(self, s):
+        """Retrun True if this NDA (instance) matches the string s."""
+        # A list of previous states that we are still in
+        previous = self.start.followes()
+        # Loop through the string. a charachter at a time
+        for c in s:
+            # Start with an empty set of current states
+            current = set()
+            # Loop through the previous state
+            for state in previous:
+                # Check if there is a c arrow from state
+                if state.label == c:
+                    # Add followes for nect state.
+                    current = (current | state.arrows[0].followes())
+            # Replace previous with current
+            previous = current
+        # If the final state is in previous, then return True, False otherwise
+        return (self.end in previous)
 
 
 def re_to_nfa(postfix):
