@@ -1,2 +1,2 @@
 (a.b|b*) ab b bb a
-a.(b.b)*.a aa abba aba
+a.(b.b)*.a aa abba aba b

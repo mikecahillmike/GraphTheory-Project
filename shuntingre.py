@@ -1,53 +1,54 @@
-# Adapted from the pseudocode @:
-# https://en.wikipedia;.org/wiki/Shunting-yard_algorithm
+# Adapted from the pseudocode at:
+# https://en.wikipedia.org/wiki/Shunting-yard_algorithm
 
 def shunt(infix):
-    """Cobert infix expressions o postfix"""
+    """Convert infix expressions to postfix."""
     # The eventual output.
     postfix = ""
-    # The shunting yard operator stack
+    # The shunting yard operator stack.
     stack = ""
-    # Operator precedence (Dictionary)
-    prec = {'*': 100, '.': 90, '|': 80, '(': 70, ')': 60}
-    # loop through string one char at a time 
-    for c in infix: 
-        
-        if c in {'a', 'b'}:
-            # Push to output
-            postfix = postfix + c
-        # if c is a non-special
-        elif c in {'*', '.', '|'}:
-            # Check what is on the stack
-            while len(stack) > 0 and prec[stack[-1]] != '(' and prec[stack[-1]] >= prec[c]:
-                #pop
-                # Append operator at the top of stack to output
+    # Operator precedence.
+    prec = {'*': 100, '.': 90, '|': 80}
+    # Loop through the input a character at a time.
+    for c in infix:
+        # c is an operator.
+        if c in {'*', '.', '|'}:
+            # Check what is on the stack.
+            while len(stack) > 0 and stack[-1] != '(' and prec[stack[-1]] >= prec[c]:
+                # Append operator at top of stack to output.
                 postfix = postfix + stack[-1]
-                # Remove operator from stack
+                # Remove operator from stack.
                 stack = stack[:-1]
-            # Push c to stack
+            # Push c to stack.
             stack = stack + c
         elif c == '(':
-            # Push c to stack
+            # Push c to stack.
             stack = stack + c
         elif c == ')':
-            while stack[-1] != '(':
-                #pop
-                # Append operator at the top of stack to output
+            while stack[-1] != "(":
+                # Append operator at top of stack to output.
                 postfix = postfix + stack[-1]
-                # Remove operator from stack
+                # Remove operator from stack.
                 stack = stack[:-1]
-            # Remove open bracket from from stack
+            # Remove open bracket from stack.
             stack = stack[:-1]
-    while len(stack)!=0:
-        #pop
-        # Append operator at the top of stack to output
+                # c is a non-special.
+        else:
+            # Push it to the output.
+            postfix = postfix + c
+
+    # Empty the operator stack.
+    while len(stack) != 0:
+        # Append operator at top of stack to output.
         postfix = postfix + stack[-1]
-        # Remove operator from stack
+        # Remove operator from stack.
         stack = stack[:-1]
+    # Return the postfix version of infix.
     return postfix
 
+
 if __name__ == "__main__":
-    for infix in ["a.(b.b)*.a"]:
-        print(f"infix: {infix}")
-        print(f"shunt: {shunt(infix)}")
+    for infix in ["a.(b.b)*.a", "1.(0.0)*.1"]:
+        print(f"infix:   {infix}")
+        print(f"postfix: {shunt(infix)}")
         print()
