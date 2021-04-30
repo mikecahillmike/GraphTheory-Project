@@ -23,17 +23,11 @@ for test in list_of_lists:
     print(f"thompson: {nfa}")
     while test:
         s = test[i]
-        i+=1
         match = nfa.match(s)
         print(f"Match '{s}': {match}")
+        if test[i] == test[-1]:
+            # Adapted from
+            # https://www.digitalocean.com/community/tutorials/how-to-use-break-continue-and-pass-statements-when-working-with-loops-in-python-3
+            break
+        i+=1
     print()
-
-"""    match = nfa.match(test[1])
-    print(f"Match '{test[1]}': {match}")
-    match = nfa.match(test[2])
-    print(f"Match '{test[2]}': {match}")
-    match = nfa.match(test[3])
-    print(f"Match '{test[3]}': {match}")
-    match = nfa.match(test[4])
-    print(f"Match '{test[4]}': {match}")"""
-    #print()
