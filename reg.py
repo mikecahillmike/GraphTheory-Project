@@ -21,10 +21,12 @@ for test in list_of_lists:
     print(f"postfix: {postfix}")
     nfa = thompson.re_to_nfa(postfix)
     print(f"thompson: {nfa}")
+    # loop through list
     while test:
         s = test[i]
         match = nfa.match(s)
         print(f"Match '{s}': {match}")
+        # if list matches end then end of list
         if test[i] == test[-1]:
             # Adapted from
             # https://www.digitalocean.com/community/tutorials/how-to-use-break-continue-and-pass-statements-when-working-with-loops-in-python-3
