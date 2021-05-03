@@ -23,6 +23,11 @@ Implementation:
 Python is one of many that has Recursion.
 An NFA is a processor that has states and reads input, each input character potentially setting it into another state.
 
+
+Research:
+For my research on regular expression I mostly referred to the notes on learnonline called "Slides: Regular Expression" and also a few things said in lectures.
+
+
 The first link is just a link where it showed me how to used a break statement in python. Turned out very similar to Java so there was no hassle
 
 break statement:
