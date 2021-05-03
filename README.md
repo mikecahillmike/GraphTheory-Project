@@ -13,14 +13,15 @@ a.b.c - a single 'a' followed by a single 'b' followed by a single 'c'.
 a.c* - an 'a' followed by zero or by 1 or more 'c' characters.
 a|b - an 'a' or 'b'.
 (a|b).c - an 'a' or 'b', followed by a 'c'.
-Precedence: 407
+Precedence:
 1. *
 2. .
 3. |
 4. () - Are used to group individual characters.
 
-
-
+Implementation:
+Python is one of many that has Recursion.
+An NFA is a processor that has states and reads input, each input character potentially setting it into another state.
 
 The first link is just a link where it showed me how to used a break statement in python. Turned out very similar to Java so there was no hassle
 
@@ -30,3 +31,6 @@ https://www.digitalocean.com/community/tutorials/how-to-use-break-continue-and-p
 
 check for end of list
 https://stackoverflow.com/questions/7662383/how-to-check-if-end-of-list-was-reached
+
+
+https://swtch.com/~rsc/regexp/regexp1.html
